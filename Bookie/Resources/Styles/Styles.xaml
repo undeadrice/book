@@ -4,6 +4,53 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
+    <Style TargetType="Label" x:Key="header-xl">
+        <Setter Property="FontSize" Value="22" ></Setter>
+        <Setter Property="FontAttributes" Value="Bold" ></Setter>
+        <Setter Property="Margin" Value="12,2,12,2" ></Setter>
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand" ></Setter>
+        <Setter Property="HorizontalTextAlignment" Value="Center" ></Setter>
+        <Setter Property="VerticalTextAlignment" Value="Center"></Setter>
+        <Setter Property="VerticalOptions" Value="CenterAndExpand"></Setter>
+    </Style>
+
+    <Style TargetType="Label" x:Key="header-l">
+        <Setter Property="FontSize" Value="16" ></Setter>
+        <Setter Property="FontAttributes" Value="Bold" ></Setter>
+        <Setter Property="Margin" Value="10,8,10,10" ></Setter>
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand" ></Setter>
+        <Setter Property="HorizontalTextAlignment" Value="Center" ></Setter>
+    </Style>
+
+    <Style TargetType="Label" x:Key="header-m">
+        <Setter Property="FontSize" Value="14"></Setter>
+        <Setter Property="FontAttributes" Value="Bold" ></Setter>
+        <Setter Property="Margin" Value="10,8,10,10" ></Setter>
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand" ></Setter>
+        <Setter Property="HorizontalTextAlignment" Value="Center" ></Setter>
+    </Style>
+
+    <Style TargetType="Label" x:Key="label-xl">
+        <Setter Property="FontSize" Value="16" ></Setter>
+        <Setter Property="Margin" Value="6" ></Setter>
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand" ></Setter>
+        <Setter Property="HorizontalTextAlignment" Value="Center" ></Setter>
+    </Style>
+
+    <Style TargetType="Label" x:Key="label-l">
+        <Setter Property="FontSize" Value="14" ></Setter>
+        <Setter Property="Margin" Value="4" ></Setter>
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand" ></Setter>
+        <Setter Property="HorizontalTextAlignment" Value="Center" ></Setter>
+    </Style>
+
+    <Style TargetType="Label" x:Key="label-m">
+        <Setter Property="FontSize" Value="12" ></Setter>
+        <Setter Property="Margin" Value="3" ></Setter>
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand" ></Setter>
+        <Setter Property="HorizontalTextAlignment" Value="Center" ></Setter>
+    </Style>
+
     <Style TargetType="ActivityIndicator">
         <Setter Property="Color" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
     </Style>
@@ -398,9 +445,9 @@
     </Style>
 
     <Style TargetType="Shell" ApplyToDerivedTypes="True">
-        <Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource OffBlack}}" />
+        <Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource OffBlack}}" />
         <Setter Property="Shell.ForegroundColor" Value="{OnPlatform WinUI={StaticResource Primary}, Default={StaticResource White}}" />
-        <Setter Property="Shell.TitleColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource SecondaryDarkText}}" />
+        <Setter Property="Shell.TitleColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource SecondaryDarkText}}" />
         <Setter Property="Shell.DisabledColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray950}}" />
         <Setter Property="Shell.UnselectedColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray200}}" />
         <Setter Property="Shell.NavBarHasShadow" Value="False" />

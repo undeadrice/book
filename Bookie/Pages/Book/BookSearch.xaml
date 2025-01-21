@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Bookie.Pages.Book.BookSearch"
+             Title="Szukaj ksiażki">
+    <ContentPage.Content>
+        <ScrollView>
+            <VerticalStackLayout Padding="16" Spacing="20">
+                <Frame HasShadow="True" Padding="16">
+                    <VerticalStackLayout HorizontalOptions="CenterAndExpand">
+                        <Image HorizontalOptions="Center" HeightRequest="38" Source="books.png" Margin="0,0,0,12"/>
+                        <BoxView HeightRequest="1" BackgroundColor="Black" HorizontalOptions="FillAndExpand" />
+                        <Label Style="{StaticResource header-xl}" Text="Filtry" HorizontalOptions="Center" Margin="0,10,0,5"/>
+                        <HorizontalStackLayout Spacing="12" HorizontalOptions="Center">
+                            <VerticalStackLayout>
+                                <Label HorizontalOptions="CenterAndExpand">Tytuł</Label>
+                                <Frame BorderColor="Black" Padding="0" HasShadow="False">
+                                    <Entry Text="{Binding Title}" Placeholder="Tytuł" WidthRequest="150" />
+                                </Frame>
+                            </VerticalStackLayout>
+                            <VerticalStackLayout>
+                                <Label HorizontalOptions="CenterAndExpand">Autor</Label>
+                                <Frame BorderColor="Black" Padding="0" HasShadow="False">
+                                    <Entry Text="{Binding Author}" Placeholder="Autor" WidthRequest="150" />
+                                </Frame>
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Spacing="16" Margin="0,12,0,0">
+                            <Button Text="Wyczyść" WidthRequest="100" Command="{Binding ClearCommand}" />
+                            <Button Text="Filtruj" WidthRequest="100" Command="{Binding SearchCommand}" />
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </Frame>
+                <Frame HasShadow="True" Padding="16">
+                    <VerticalStackLayout HorizontalOptions="CenterAndExpand">
+                        <Label Style="{StaticResource header-l}" Text="Wyniki" HorizontalOptions="Center" Margin="0,0,0,10"/>
+                        <ListView ItemsSource="{Binding Books}" 
+                                  SelectionMode="None"
+                                  HasUnevenRows="True"
+                                  VerticalOptions="FillAndExpand">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Frame Margin="20" BorderColor="Gray" Padding="10" CornerRadius="5">
+                                            <StackLayout>
+                                                <Label Style="{StaticResource header-m}" Text="{Binding Title}" />
+                                                <Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="8">
+                                                    <Label Grid.Column="0" HorizontalOptions="StartAndExpand" Style="{StaticResource label-l}" Text="{Binding Author}" TextColor="Gray" VerticalOptions="Center" />
+                                                    <ImageButton CommandParameter="{Binding}" Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.MarkAsReadCommand}" Grid.Column="1" Source="read.png"  WidthRequest="32"  HeightRequest="32"  HorizontalOptions="End" />
+                                                    <ImageButton CommandParameter="{Binding}" Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateDetailsCommand}" Grid.Column="2" Source="details.png"  WidthRequest="32"  HeightRequest="32"  HorizontalOptions="End" />
+                                                </Grid>
+                                            </StackLayout>
+                                        </Frame>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </VerticalStackLayout>
+                </Frame>
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
