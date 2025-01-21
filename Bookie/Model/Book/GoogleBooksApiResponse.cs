@@ -15,11 +15,11 @@ namespace Bookie.Model.Book
             {
                 var model = new BookModel(
                     item.Id,
-                    item.VolumeInfo.Authors.FirstOrDefault(),
-                    item.VolumeInfo.Title,
-                    item.VolumeInfo.PublishedDate,
-                    item.VolumeInfo.ImageLinks.Thumbnail,
-                    item.VolumeInfo.Description);
+                    item.VolumeInfo?.Authors.FirstOrDefault(),
+                    item.VolumeInfo?.Title,
+                    item.VolumeInfo?.PublishedDate,
+                    item.VolumeInfo?.ImageLinks?.Thumbnail,
+                    item.VolumeInfo?.Description);
 
                 result.Add(model);
             }

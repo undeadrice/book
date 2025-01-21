@@ -3,6 +3,7 @@ using Bookie.Services.Domain.Book;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
+using CommunityToolkit.Maui.Alerts;
 
 namespace Bookie.ViewModels.Book
 {
@@ -45,6 +46,7 @@ namespace Bookie.ViewModels.Book
         public void MarkAsRead(BookModel book)
         {
             _bookService.MarkAsRead(book);
+            Toast.Make("Dodano do przeczytanych").Show();
         }
     }
 }

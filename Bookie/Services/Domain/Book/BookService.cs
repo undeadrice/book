@@ -15,15 +15,15 @@ namespace Bookie.Services.Domain.Book
         public async Task<IEnumerable<BookModel>> GetAll(BookFilterCriteria criteria)
         {
             var responseString = await _bookHttpService.GetAll(criteria);
-            var responseObject = JsonSerializer.Deserialize<GoogleBooksApiResponse>(responseString);
+            var responseObject = JsonSerializer.Deserialize<GoogleBooksApiResponse>(responseString); 
             return responseObject.ToBookModels();
         }
 
         public async Task<BookModel> Get(BookFilterCriteria criteria)
         {
             var responseString = await _bookHttpService.Get(criteria);
-            var responseObject = JsonSerializer.Deserialize<GoogleBooksApiResponse>(responseString);
-            return responseObject.ToBookModels().First();
+            var responseObject = JsonSerializer.Deserialize<GoogleSingleBookApiResponse>(responseString);
+            return responseObject.ToBookModel();
         }
 
         public void MarkAsRead(BookModel model)
@@ -54,7 +54,6 @@ namespace Bookie.Services.Domain.Book
             {
 
             }
-
         }
 
         public void UnmarkRead(BookModel model)

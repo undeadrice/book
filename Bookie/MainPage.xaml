@@ -4,9 +4,8 @@
              Title="Strona główna"
              x:Class="Bookie.MainPage">
     <AbsoluteLayout>
-        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="SizeProportional" Padding="1" Spacing="24" HorizontalOptions="CenterAndExpand">
-       
-            <Grid ColumnSpacing="24" RowSpacing="24" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" ColumnDefinitions="0.5*,0.5*" RowDefinitions="*,*">
+        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="SizeProportional" HorizontalOptions="CenterAndExpand">
+            <Grid ColumnSpacing="12" RowSpacing="24" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" ColumnDefinitions="0.5*,0.5*" RowDefinitions="*,*">
                 <Label Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource header-xl}" TextColor="{StaticResource Primary}">Bookie</Label>
                 <Frame Grid.Column="0" Grid.Row="1" WidthRequest="160">
                     <Frame.GestureRecognizers>

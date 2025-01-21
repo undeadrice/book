@@ -2,6 +2,7 @@
 using Bookie.Services.Domain.Book;
 using Bookie.ViewModels;
 using Bookie.ViewModels.Book;
+using CommunityToolkit.Maui;
 
 namespace Bookie
 {
@@ -12,6 +13,7 @@ namespace Bookie
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .RegisterViews()
                 .RegisterViewModels()
                 .RegisterServices()

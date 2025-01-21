@@ -14,20 +14,19 @@
                         <HorizontalStackLayout Spacing="12" HorizontalOptions="Center">
                             <VerticalStackLayout>
                                 <Label HorizontalOptions="CenterAndExpand">Tytuł</Label>
-                                <Frame BorderColor="Black" Padding="0" HasShadow="False">
-                                    <Entry Text="{Binding Title}" Placeholder="Tytuł" WidthRequest="150" />
+                                <Frame BorderColor="Black">
+                                    <Entry Text="{Binding Title}" Placeholder="Tytuł" />
                                 </Frame>
                             </VerticalStackLayout>
                             <VerticalStackLayout>
                                 <Label HorizontalOptions="CenterAndExpand">Autor</Label>
-                                <Frame BorderColor="Black" Padding="0" HasShadow="False">
-                                    <Entry Text="{Binding Author}" Placeholder="Autor" WidthRequest="150" />
+                                <Frame BorderColor="Black">
+                                    <Entry Text="{Binding Author}" Placeholder="Autor"/>
                                 </Frame>
                             </VerticalStackLayout>
                         </HorizontalStackLayout>
                         <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Spacing="16" Margin="0,12,0,0">
-                            <Button Text="Wyczyść" WidthRequest="100" Command="{Binding ClearCommand}" />
-                            <Button Text="Filtruj" WidthRequest="100" Command="{Binding SearchCommand}" />
+                            <Button Text="Szukaj" WidthRequest="100" Command="{Binding SearchCommand}" />
                         </HorizontalStackLayout>
                     </VerticalStackLayout>
                 </Frame>

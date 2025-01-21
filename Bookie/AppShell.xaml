@@ -6,10 +6,8 @@
     xmlns:local="clr-namespace:Bookie"
     Shell.FlyoutBehavior="Disabled"
     Title="Bookie">
-
     <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
-
 </Shell>
