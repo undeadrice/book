@@ -39,9 +39,6 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Services\Http\" />
-	</ItemGroup>
-	<ItemGroup>
 	  <MauiSplashScreen Include="Resources\Splash\splash.svg" />
 	</ItemGroup>
 	<ItemGroup>

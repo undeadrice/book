@@ -15,7 +15,7 @@ namespace Bookie.ViewModels.Book
         [ObservableProperty]
         private string _title;
 
-        [ObservableProperty]
+        [ObservableProperty()]
         private string _author;
 
         [ObservableProperty]
@@ -35,7 +35,7 @@ namespace Bookie.ViewModels.Book
             await Shell.Current.GoToAsync(AppShell.BOOK_DETAILS_URL, false, queryParameters);
         }
 
-        [RelayCommand]
+        [RelayCommand(CanExecute = nameof(CanExecuteSearch))]
         public async Task Search()
         {
             var result = await _bookService.GetAll(BookFilterCriteria.WithTitleAndAuthor(Title, Author));
@@ -47,6 +47,20 @@ namespace Bookie.ViewModels.Book
         {
             _bookService.MarkAsRead(book);
             Toast.Make("Dodano do przeczytanych").Show();
+        }
+
+        public bool CanExecuteSearch()
+        {
+            return !string.IsNullOrEmpty(Title) || !string.IsNullOrEmpty(Author);
+        }
+
+        partial void OnTitleChanged(string value)
+        {
+            SearchCommand.NotifyCanExecuteChanged();
+        }
+        partial void OnAuthorChanged(string value)
+        {
+            SearchCommand.NotifyCanExecuteChanged();
         }
     }
 }

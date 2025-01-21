@@ -45,11 +45,27 @@
     </Style>
 
     <Style TargetType="Button">
-        <Setter Property="BackgroundColor" Value="{StaticResource Primary}"></Setter>
-        <Setter Property="TextColor" Value="{StaticResource White}"></Setter>
         <Setter Property="FontSize" Value="12" ></Setter>
         <Setter Property="Margin" Value="3" ></Setter>
         <Setter Property="HorizontalOptions" Value="CenterAndExpand" ></Setter>
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup Name="CommonStates">
+                    <VisualState Name="Normal">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                            <Setter Property="TextColor" Value="White" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="Gray" />
+                            <Setter Property="TextColor" Value="LightGray" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
     </Style>
 
     <Style TargetType="Label">
@@ -73,6 +89,11 @@
     <Style TargetType="VerticalStackLayout">
         <Setter Property="BackgroundColor" Value="{StaticResource White}" />
     </Style>
+
+    <Style TargetType="ScrollView">
+        <Setter Property="BackgroundColor" Value="{StaticResource White}" />
+    </Style>
+
 
     <Style TargetType="HorizontalStackLayout">
         <Setter Property="BackgroundColor" Value="{StaticResource White}" />
