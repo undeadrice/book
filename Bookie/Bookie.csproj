@@ -19,15 +19,15 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
-		<MauiImage Include="Resources\Images\*" />
+		<MauiImage Include="Resources\Fonts\Images\*" />
 		<MauiFont Include="Resources\Fonts\*" />
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 	<ItemGroup>
-	  <None Remove="Resources\Images\books.png" />
-	  <None Remove="Resources\Images\Details.png" />
-	  <None Remove="Resources\Images\read.png" />
-	  <None Remove="Resources\Images\trash.png" />
+	  <None Remove="Resources\Fonts\Images\books.png" />
+	  <None Remove="Resources\Fonts\Images\Details.png" />
+	  <None Remove="Resources\Fonts\Images\read.png" />
+	  <None Remove="Resources\Fonts\Images\trash.png" />
 	  <None Remove="Resources\Splash\splash.svg" />
 	</ItemGroup>
 	<ItemGroup>

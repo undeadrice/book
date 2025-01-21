@@ -39,7 +39,11 @@ namespace Bookie.ViewModels.Book
         public async Task Search()
         {
             var result = await _bookService.GetAll(BookFilterCriteria.WithTitleAndAuthor(Title, Author));
-            Books = new ObservableCollection<BookModel>(result);
+            var d = Shell.Current;
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                Books = new ObservableCollection<BookModel>(result);
+            });
         }
 
         [RelayCommand]

@@ -6,7 +6,7 @@
     <ContentPage.Content>
         <ScrollView>
             <VerticalStackLayout Padding="20">
-                <Image Source="{Binding Book.CoverUrl}">
+                <Image Source="https://aka.ms/campus.jpg">
                 </Image>
                 <Label Style="{StaticResource header-xl}" Text="{Binding Book.Title}" 
                    FontAttributes="Bold"
