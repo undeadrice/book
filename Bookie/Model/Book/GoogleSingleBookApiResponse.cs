@@ -20,8 +20,8 @@ namespace Bookie.Model.Book
                 VolumeInfo?.Authors?.FirstOrDefault(),
                 VolumeInfo?.Title,
                 VolumeInfo?.PublishedDate,
-                VolumeInfo?.ImageLinks?.Thumbnail,
-                VolumeInfo?.Description);
+                (VolumeInfo?.ImageLinks?.Thumbnail + ".jpg").Replace("http", "https"),
+                VolumeInfo?.Description.Replace("<p>", "").Replace("</p>", ""));
         }
     }
 }
