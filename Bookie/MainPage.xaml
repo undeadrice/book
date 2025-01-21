@@ -18,7 +18,7 @@
                 </Frame>
                 <Frame Grid.Column="1" Grid.Row="1" WidthRequest="160">
                     <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateFinishedBooksCommand}" />
+                        <TapGestureRecognizer Command="{Binding NavigateReadBooksCommand}" />
                     </Frame.GestureRecognizers>
                     <VerticalStackLayout>
                         <Image VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Source="read.png"></Image>

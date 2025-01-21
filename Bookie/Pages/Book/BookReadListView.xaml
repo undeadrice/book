@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Bookie.Pages.Book.BookReadListView">
+    <ContentPage.Content>
+        <Frame HasShadow="True" Padding="16">
+            <VerticalStackLayout HorizontalOptions="CenterAndExpand">
+                <Label Style="{StaticResource header-l}" Text="Wyniki" HorizontalOptions="Center" Margin="0,0,0,10"/>
+                <ListView ItemsSource="{Binding Books}" 
+                   SelectionMode="None"
+                   HasUnevenRows="True"
+                   VerticalOptions="FillAndExpand">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame Margin="20" BorderColor="Gray" Padding="10" CornerRadius="5">
+                                    <StackLayout>
+                                        <Label Style="{StaticResource header-m}" Text="{Binding Title}" />
+                                        <Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="8">
+                                            <Label Grid.Column="0" HorizontalOptions="StartAndExpand" Style="{StaticResource label-l}" Text="{Binding Author}" TextColor="Gray" VerticalOptions="Center" />
+                                            <ImageButton CommandParameter="{Binding}" Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.MarkAsUnread}" Grid.Column="1" Source="trash.png"  WidthRequest="32"  HeightRequest="32"  HorizontalOptions="End" />
+                                        </Grid>
+                                    </StackLayout>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </VerticalStackLayout>
+        </Frame>
+    </ContentPage.Content>
+</ContentPage>

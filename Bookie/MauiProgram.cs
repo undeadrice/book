@@ -32,7 +32,7 @@ namespace Bookie
         {
             mauiAppBuilder.Services.AddTransient<MainPage>();
             mauiAppBuilder.Services.AddTransient<BookSearch>();
-            mauiAppBuilder.Services.AddTransient<BookFinishedListView>();
+            mauiAppBuilder.Services.AddTransient<BookReadListView>();
             mauiAppBuilder.Services.AddTransient<BookDetailsView>();
 
             return mauiAppBuilder;
@@ -42,7 +42,7 @@ namespace Bookie
         {
             mauiAppBuilder.Services.AddSingleton<MainViewModel>();
             mauiAppBuilder.Services.AddSingleton<BookSearchViewModel>();
-            mauiAppBuilder.Services.AddSingleton<BookFinishedViewModel>();
+            mauiAppBuilder.Services.AddSingleton<BookReadViewModel>();
             mauiAppBuilder.Services.AddSingleton<BookDetailsViewModel>();
 
             return mauiAppBuilder;

@@ -32,7 +32,7 @@ namespace Bookie.ViewModels.Book
                 { "id", book.Id }
             };
 
-            await Shell.Current.GoToAsync(AppShell.BookDetailsUrl, false, queryParameters);
+            await Shell.Current.GoToAsync(AppShell.BOOK_DETAILS_URL, false, queryParameters);
         }
 
         [RelayCommand]

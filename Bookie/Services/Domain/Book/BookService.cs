@@ -1,5 +1,6 @@
 ﻿using Bookie.Model.Book;
 using System.Text.Json;
+using static Android.Graphics.ColorSpace;
 
 namespace Bookie.Services.Domain.Book
 {
@@ -15,7 +16,7 @@ namespace Bookie.Services.Domain.Book
         public async Task<IEnumerable<BookModel>> GetAll(BookFilterCriteria criteria)
         {
             var responseString = await _bookHttpService.GetAll(criteria);
-            var responseObject = JsonSerializer.Deserialize<GoogleBooksApiResponse>(responseString); 
+            var responseObject = JsonSerializer.Deserialize<GoogleBooksApiResponse>(responseString);
             return responseObject.ToBookModels();
         }
 
@@ -84,6 +85,32 @@ namespace Bookie.Services.Domain.Book
             {
 
             }
+        }
+
+        public IEnumerable<BookModel> GetAllRead()
+        {
+            string fileName = Path.Combine(FileSystem.AppDataDirectory, "books4.txt");
+
+            if (!File.Exists(fileName))
+            {
+                using (var stream = File.Create(fileName))
+                {
+                    var emptyJson = JsonSerializer.Serialize(new List<BookModel>());
+                    byte[] bytes = System.Text.Encoding.UTF8.GetBytes(emptyJson);
+                    stream.Write(bytes, 0, bytes.Length);
+                }
+            }
+            try
+            {
+                var json = File.ReadAllText(fileName);
+                return JsonSerializer.Deserialize<IList<BookModel>>(json);
+            }
+            catch (Exception e)
+            {
+
+            }
+
+            return Enumerable.Empty<BookModel>();
         }
     }
 }

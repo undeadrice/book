@@ -8,6 +8,8 @@ namespace Bookie.Services.Domain.Book
 
         public Task<BookModel> Get(BookFilterCriteria criteria);
 
+        public IEnumerable<BookModel> GetAllRead();
+
         public void MarkAsRead(BookModel model);
 
         public void UnmarkRead(BookModel model);

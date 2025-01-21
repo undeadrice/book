@@ -2,9 +2,9 @@
 
 namespace Bookie.Pages.Book
 {
-	public partial class BookFinishedListView : ContentPage
+	public partial class BookReadListView : ContentPage
 	{
-		public BookFinishedListView(BookFinishedViewModel viewModel)
+		public BookReadListView(BookReadViewModel viewModel)
 		{
 			BindingContext = viewModel;
 			InitializeComponent();

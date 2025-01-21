@@ -13,14 +13,14 @@ namespace Bookie.ViewModels
         [RelayCommand]
         public async Task NavigateBookSearch()
         {
-            await Shell.Current.GoToAsync(AppShell.BookSearchUrl);
+            await Shell.Current.GoToAsync(AppShell.BOOK_SEARCH_URL);
         }
 
 
         [RelayCommand]
-        public async Task NavigateFinishedBooks()
+        public async Task NavigateReadBooks()
         {
-            await Shell.Current.GoToAsync(AppShell.BookReadUrl);
+            await Shell.Current.GoToAsync(AppShell.BOOK_READ_URL);
         }
     }
 }

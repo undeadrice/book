@@ -53,7 +53,7 @@
 	  <MauiXaml Update="Pages\Book\BookDetailsView.xaml">
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\Book\BookFinishedListView.xaml">
+	  <MauiXaml Update="Pages\Book\BookReadListView.xaml">
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\Book\BookSearch.xaml">
