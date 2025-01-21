@@ -1,6 +1,5 @@
 ﻿using Bookie.Model.Book;
 using System.Text.Json;
-using static Android.Graphics.ColorSpace;
 
 namespace Bookie.Services.Domain.Book
 {

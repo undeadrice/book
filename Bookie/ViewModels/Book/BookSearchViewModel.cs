@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Core.Extensions;
 
 namespace Bookie.ViewModels.Book
 {
@@ -25,6 +26,7 @@ namespace Bookie.ViewModels.Book
         {
             _bookService = bookService;
         }
+
         [RelayCommand]
         public async Task NavigateDetails(BookModel book)
         {
@@ -39,11 +41,7 @@ namespace Bookie.ViewModels.Book
         public async Task Search()
         {
             var result = await _bookService.GetAll(BookFilterCriteria.WithTitleAndAuthor(Title, Author));
-            var d = Shell.Current;
-            MainThread.BeginInvokeOnMainThread(() =>
-            {
-                Books = new ObservableCollection<BookModel>(result);
-            });
+            Books = result.ToObservableCollection();
         }
 
         [RelayCommand]

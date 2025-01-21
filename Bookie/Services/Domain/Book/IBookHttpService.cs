@@ -6,6 +6,7 @@ namespace Bookie.Services.Domain.Book
     {
         public Task<string> GetAll(BookFilterCriteria criteria);
 
+        // TODO na id
         public Task<string> Get(BookFilterCriteria criteria);
     }
 }

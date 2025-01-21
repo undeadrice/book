@@ -27,7 +27,7 @@ namespace Bookie.Model.Book
             return result;
         }
     }
-
+    // TODO wyprowadzic
     public class BookItem
     {
         [JsonPropertyName("kind")]
