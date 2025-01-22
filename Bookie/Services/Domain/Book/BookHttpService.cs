@@ -17,12 +17,12 @@ namespace Bookie.Services.Domain.Book
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<string> Get(BookFilterCriteria criteria)
+        public async Task<string> Get(string id)
         {
             var client = _httpClientFactory.CreateClient(CLIENT_NAME);
             client.DefaultRequestHeaders.Add("User-Agent", "BookieApp/1.0");
             client.DefaultRequestHeaders.Add("Accept", "application/json");
-            var url = $"{BASE_URL_BY_ID}{Uri.EscapeDataString(criteria.Id)}?key={_token}";
+            var url = $"{BASE_URL_BY_ID}{Uri.EscapeDataString(id)}?key={_token}";
             var response = await client.GetAsync(url);
 
             if (response.IsSuccessStatusCode)

@@ -6,10 +6,12 @@ namespace Bookie.Services.Domain.Book
     public class BookService : IBookService
     {
         private readonly IBookHttpService _bookHttpService;
+        private readonly IBookRepository _bookRepository;
 
-        public BookService(IBookHttpService bookHttpService)
+        public BookService(IBookHttpService bookHttpService, IBookRepository bookRepository)
         {
             _bookHttpService = bookHttpService;
+            _bookRepository = bookRepository;
         }
 
         public async Task<IEnumerable<BookModel>> GetAll(BookFilterCriteria criteria)
@@ -19,97 +21,26 @@ namespace Bookie.Services.Domain.Book
             return responseObject.ToBookModels();
         }
 
-        public async Task<BookModel> Get(BookFilterCriteria criteria)
+        public async Task<BookModel> Get(string id)
         {
-            var responseString = await _bookHttpService.Get(criteria);
+            var responseString = await _bookHttpService.Get(id);
             var responseObject = JsonSerializer.Deserialize<GoogleSingleBookApiResponse>(responseString);
             return responseObject.ToBookModel();
         }
 
-        public void MarkAsRead(BookModel model)
+        public void AddtoRead(BookModel model)
         {
-            string fileName = Path.Combine(FileSystem.AppDataDirectory, "books4.txt");
-
-            if (!File.Exists(fileName))
-            {
-                using (var stream = File.Create(fileName))
-                {
-                    var emptyJson = JsonSerializer.Serialize(new List<BookModel>());
-                    byte[] bytes = System.Text.Encoding.UTF8.GetBytes(emptyJson);
-                    stream.Write(bytes, 0, bytes.Length);
-                }
-            }
-            try
-            {
-                var json = File.ReadAllText(fileName);
-
-                var list = JsonSerializer.Deserialize<IList<BookModel>>(json);
-                list.Add(model);
-
-                var listWithAddedModelJson = JsonSerializer.Serialize(list);
-
-                File.WriteAllText(fileName, listWithAddedModelJson);
-            }
-            catch (Exception e)
-            {
-
-            }
+            _bookRepository.AddToRead(model);
         }
 
-        public void UnmarkRead(BookModel model)
+        public void DeleteFromRead(BookModel model)
         {
-            string fileName = Path.Combine(FileSystem.AppDataDirectory, "books4.txt");
-
-            if (!File.Exists(fileName))
-            {
-                using (var stream = File.Create(fileName))
-                {
-                    var emptyJson = JsonSerializer.Serialize(new List<BookModel>());
-                    byte[] bytes = System.Text.Encoding.UTF8.GetBytes(emptyJson);
-                    stream.Write(bytes, 0, bytes.Length);
-                }
-            }
-            try
-            {
-                var json = File.ReadAllText(fileName);
-
-                var list = JsonSerializer.Deserialize<IList<BookModel>>(json);
-                list.Remove(model);
-
-                var listWithAddedModelJson = JsonSerializer.Serialize(list);
-
-                File.WriteAllText(fileName, listWithAddedModelJson);
-            }
-            catch (Exception e)
-            {
-
-            }
+            _bookRepository.DeleteFromRead(model);
         }
 
         public IEnumerable<BookModel> GetAllRead()
         {
-            string fileName = Path.Combine(FileSystem.AppDataDirectory, "books4.txt");
-
-            if (!File.Exists(fileName))
-            {
-                using (var stream = File.Create(fileName))
-                {
-                    var emptyJson = JsonSerializer.Serialize(new List<BookModel>());
-                    byte[] bytes = System.Text.Encoding.UTF8.GetBytes(emptyJson);
-                    stream.Write(bytes, 0, bytes.Length);
-                }
-            }
-            try
-            {
-                var json = File.ReadAllText(fileName);
-                return JsonSerializer.Deserialize<IList<BookModel>>(json);
-            }
-            catch (Exception e)
-            {
-
-            }
-
-            return Enumerable.Empty<BookModel>();
+            return _bookRepository.GetAllRead();
         }
     }
 }

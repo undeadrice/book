@@ -1,4 +1,5 @@
 ﻿using Bookie.Pages.Book;
+using Bookie.Services;
 using Bookie.Services.Domain.Book;
 using Bookie.ViewModels;
 using Bookie.ViewModels.Book;
@@ -52,6 +53,8 @@ namespace Bookie
         {
             mauiAppBuilder.Services.AddTransient<IBookService, BookService>();
             mauiAppBuilder.Services.AddTransient<IBookHttpService, BookHttpService>();
+            mauiAppBuilder.Services.AddTransient<IInitializable, BookFileRepository>();
+            mauiAppBuilder.Services.AddTransient<IBookRepository, BookFileRepository>();
 
             return mauiAppBuilder;
         }

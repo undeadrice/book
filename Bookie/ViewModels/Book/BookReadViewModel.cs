@@ -24,8 +24,16 @@ namespace Bookie.ViewModels.Book
         [RelayCommand]
         public void MarkAsUnread(BookModel book)
         {
-            _bookService.UnmarkRead(book);
-            Toast.Make("Usunięto z przeczytanych").Show();
+            try
+            {
+                _bookService.DeleteFromRead(book);
+                Books.Remove(book);
+                Toast.Make("Usunięto z przeczytanych").Show();
+            }
+            catch(Exception e)
+            {
+                Toast.Make(e.Message).Show();
+            }
         }
 
         // TODO method used as form of initialize function. Not the best way.

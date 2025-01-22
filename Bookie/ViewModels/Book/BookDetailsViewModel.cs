@@ -20,7 +20,7 @@ namespace Bookie.ViewModels.Book
         public async void ApplyQueryAttributes(IDictionary<string, object> query)
         {
             var id = (string)query["id"];
-            Book = await _bookService.Get(BookFilterCriteria.WithId(id));
+            Book = await _bookService.Get(id);
         }
     }
 }

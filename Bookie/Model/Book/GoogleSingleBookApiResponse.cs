@@ -21,7 +21,7 @@ namespace Bookie.Model.Book
                 VolumeInfo?.Title,
                 VolumeInfo?.PublishedDate,
                 (VolumeInfo?.ImageLinks?.Thumbnail + ".jpg").Replace("http", "https"),
-                VolumeInfo?.Description.Replace("<p>", "").Replace("</p>", ""));
+                VolumeInfo?.Description?.Replace("<p>", "").Replace("</p>", ""));
         }
     }
 }

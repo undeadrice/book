@@ -33,22 +33,35 @@ namespace Bookie.ViewModels.Book
             var queryParameters = new Dictionary<string, object>{
                 { "id", book.Id }
             };
-
             await Shell.Current.GoToAsync(AppShell.BOOK_DETAILS_URL, false, queryParameters);
         }
 
         [RelayCommand(CanExecute = nameof(CanExecuteSearch))]
         public async Task Search()
         {
-            var result = await _bookService.GetAll(BookFilterCriteria.WithTitleAndAuthor(Title, Author));
-            Books = result.ToObservableCollection();
+            try
+            {
+                var result = await _bookService.GetAll(BookFilterCriteria.WithTitleAndAuthor(Title, Author));
+                Books = result.ToObservableCollection();
+            }
+            catch
+            {
+                await Toast.Make("Wystąpił błąd").Show();
+            }
         }
 
         [RelayCommand]
         public void MarkAsRead(BookModel book)
         {
-            _bookService.MarkAsRead(book);
-            Toast.Make("Dodano do przeczytanych").Show();
+            try
+            {
+                _bookService.AddtoRead(book);
+                Toast.Make("Dodano do przeczytanych").Show();
+            }
+            catch
+            {
+                Toast.Make("Wystąpił błąd").Show();
+            }
         }
 
         public bool CanExecuteSearch()

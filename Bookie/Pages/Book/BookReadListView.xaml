@@ -4,9 +4,8 @@
              x:Class="Bookie.Pages.Book.BookReadListView"
              Title="Przeczytane">
     <ContentPage.Content>
-        <ScrollView Padding="16">
+        <ScrollView>
             <VerticalStackLayout HorizontalOptions="CenterAndExpand">
-                <Label Style="{StaticResource header-l}" Text="Wyniki" HorizontalOptions="Center" Margin="0,0,0,10"/>
                 <ListView ItemsSource="{Binding Books}" 
                    SelectionMode="None"
                    HasUnevenRows="True"
@@ -14,7 +13,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Frame Margin="20" BorderColor="Gray" Padding="10" CornerRadius="5">
+                                <Border Margin="20" Padding="10">
                                     <StackLayout>
                                         <Label Style="{StaticResource header-m}" Text="{Binding Title}" />
                                         <Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="8">
@@ -22,7 +21,7 @@
                                             <ImageButton CommandParameter="{Binding}" Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.MarkAsUnreadCommand}" Grid.Column="1" Source="trash.png"  WidthRequest="32"  HeightRequest="32"  HorizontalOptions="End" />
                                         </Grid>
                                     </StackLayout>
-                                </Frame>
+                                </Border>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
