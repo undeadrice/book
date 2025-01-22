@@ -8,7 +8,7 @@ namespace Bookie.Model.Book
         public string Kind { get; set; }
 
         [JsonPropertyName("id")]
-        public string Id { get; set; }
+        public string Id { get; set; } 
 
         [JsonPropertyName("volumeInfo")]
         public VolumeInfo VolumeInfo { get; set; }
@@ -21,7 +21,13 @@ namespace Bookie.Model.Book
                 VolumeInfo?.Title,
                 VolumeInfo?.PublishedDate,
                 (VolumeInfo?.ImageLinks?.Thumbnail + ".jpg").Replace("http", "https"),
-                VolumeInfo?.Description?.Replace("<p>", "").Replace("</p>", ""));
+                VolumeInfo?.Description?
+                .Replace("<p>", string.Empty)
+                .Replace("<i>", string.Empty)
+                .Replace("<b>", string.Empty)
+                .Replace("</p>", string.Empty)
+                .Replace("</i>", string.Empty)
+                .Replace("</b>", string.Empty));
         }
     }
 }
