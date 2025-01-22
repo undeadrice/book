@@ -5,7 +5,9 @@ namespace Bookie.Services.Domain.Book
     public class BookHttpService : IBookHttpService
     {
         public static string CLIENT_NAME = "GoogleBooksClient";
+
         public static string BASE_URL = "https://www.googleapis.com/books/v1/volumes?q=";
+
         public static string BASE_URL_BY_ID = "https://www.googleapis.com/books/v1/volumes/";
 
         private readonly string _token = "AIzaSyCik9kpJTxfKYaCkSHBpu8bDSdtEhpYTrc"; // Token is held here for simplicity
@@ -20,9 +22,7 @@ namespace Bookie.Services.Domain.Book
         public async Task<string> Get(string id)
         {
             var client = _httpClientFactory.CreateClient(CLIENT_NAME);
-            client.DefaultRequestHeaders.Add("User-Agent", "BookieApp/1.0");
-            client.DefaultRequestHeaders.Add("Accept", "application/json");
-            var url = $"{BASE_URL_BY_ID}{Uri.EscapeDataString(id)}?key={_token}";
+            var url = $"{BASE_URL_BY_ID}{id}?key={_token}";
             var response = await client.GetAsync(url);
 
             if (response.IsSuccessStatusCode)
