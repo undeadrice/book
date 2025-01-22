@@ -10,7 +10,7 @@ namespace Bookie.Services.Domain.Book
 
         public static string BASE_URL_BY_ID = "https://www.googleapis.com/books/v1/volumes/";
 
-        private readonly string _token = "AIzaSyCik9kpJTxfKYaCkSHBpu8bDSdtEhpYTrc"; // Token is held here for simplicity
+        private readonly string _token = ""; // Token is held here for simplicity
 
         private readonly IHttpClientFactory _httpClientFactory;
 
